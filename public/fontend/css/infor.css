@@ -1,0 +1,205 @@
+*{
+    padding: 0px;
+    margin: 0px;
+    font-family: sans-serif;
+    box-sizing: border-box;
+}
+body{
+    background-image: url(../img/lamviec1.jpg);
+    background-size: cover;
+    display: flex;
+    background-position: center;
+    background-repeat: no-repeat;
+    color:aqua ;
+}
+h1{
+    color: #fff;
+    font-size: 20px;
+    margin-bottom: 30px;
+}
+.infor-form{
+    width:100%;
+    height: 100%;
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 15px;
+    border: 2px dotted #cccccc;
+    border-radius: 10px;
+    background-color: rgba(18, 80, 121, 0.5);
+}
+.box{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.box .input-box{
+    width: calc(100% / 2 - 20px);
+    margin: 20px 0 10px 0;
+}
+.box .input-box input{
+    height: 45px;
+    width: 100%;
+}
+.box .input-box .thuoctinh{
+    display: block;
+    font-weight: 500;
+    margin-bottom: 5px;
+}
+.input-box{
+    margin-bottom: 10px;
+}
+.input-box input[type='text'],
+.input-box input[type='tel'],
+.input-box input[type='date'],
+.input-box input[type='email'],
+.input-box input[type='file']{
+    padding: 7.5px 15px;
+    border: 1px solid #cccccc;
+    outline: none;
+    font-size: 16px;
+    display: flex;
+    flex-wrap: wrap;
+    height: 40px;
+    color:#fb4b2b;
+    border-radius: 5px;
+    margin-top: 5px;
+}
+.input-box select{
+    padding: 7.5px 15px;
+    width: 100%;
+    border: 1px solid #cccccc;
+    outline: none;
+    font-size: 16px;
+    height: 40px;
+    color:#fb4b2b;
+    margin-top: 5px;
+    border-radius: 5px;
+}
+.input-box option{
+    font-size: 16px;
+}
+.input-box img{
+    margin-left: 80px;
+    border-radius: 10px;
+}
+.input-box textarea{
+    padding: 7.5px 15px;
+    width: 100%;
+    border: 1px solid #cccccc;
+    outline: none;
+    font-size: 16px;
+    min-height: 120px;
+    color: #666666;
+    margin-top: 7px;
+    border-radius: 5px;
+}
+a{
+    position: relative;
+    display: inline-block;
+    padding: 15px 50px;
+    text-decoration: none;
+    text-transform: uppercase;
+    background: #009999;
+    font-size: 14px;
+    color: #ffffff;
+    letter-spacing: 2px;
+    margin-left: 230px;
+    border-radius: 5px;
+    font-size: 16px;
+}
+a span{
+    position: absolute;
+    display: block;
+    background: #fb4b2b;;
+}
+a:hover{
+    background:#fb4b2b;
+    color: #ffffff;
+    transition: 0.5s;
+    transition-delay: 0.3s;
+}
+a span:nth-child(1){
+    left: 0;
+    bottom: 0;
+    width: 3px;
+    height: 100%;
+    transform: scaleY(0);
+    transform-origin: top;
+    transition: transform 0.25s;
+    transition-delay: 0.5s;
+}
+a:hover span:nth-child(1){
+    transform: scaleY(1);
+    transform-origin: bottom;
+    transition: transform 0.25s;
+}
+a span:nth-child(2){
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 3px;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.25s;
+    transition-delay: 0.5s;
+}
+a:hover span:nth-child(2){
+    transform: scaleX(1);
+    transform-origin: left;
+    transition: transform 0.25s;
+}
+a span:nth-child(3){
+    right: 0;
+    bottom: 0;
+    width: 3px;
+    height: 100%;
+    transform: scaleY(0);
+    transform-origin: bottom;
+    transition: transform 0.25s;
+    transition-delay: 0.75s;
+}
+a:hover span:nth-child(3){
+    transform: scaleY(1);
+    transform-origin: top;
+    transition: transform 0.25s;
+}
+a span:nth-child(4){
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 3px;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.25s;
+    transition-delay: 0.75s;
+}
+a:hover span:nth-child(4){
+    transform: scaleX(1);
+    transform-origin: right;
+    transition: transform 0.25s;
+}
+.btn-1{
+	text-decoration: none;
+	text-align: center;
+	display: block;
+	float: left;
+	margin-left: auto ;
+	width: 120px;
+	height: 36px;
+	border:none;
+	color:fuchsia;
+	background-color:white;
+	border-radius: 5px;
+	box-shadow: inset 0 0 0 0 cyan;
+	transition: ease-out 0.3s;
+	font-size: 1rem;
+	outline: none;
+	padding-top: .5rem;
+	cursor: pointer;
+	letter-spacing: 1.2px;
+}
+.btn-1:hover{
+	box-shadow: inset 120px 0 0 cyan;
+	cursor: pointer;
+	color: brown;
+}

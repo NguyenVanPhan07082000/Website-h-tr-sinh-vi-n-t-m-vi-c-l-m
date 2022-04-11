@@ -1,0 +1,139 @@
+* {
+  box-sizing: border-box;
+}
+body{
+  background-image: url(../img/lamviec7.jpg);
+  background-size:cover;
+  display: flex;
+  justify-content: center;
+  flex-direction: column ;
+  font-family: 'Montserrat', sans-serif;
+  height: 100vh;
+  margin: -20px 0 50px;
+  color:tomato;
+}
+.container{
+  justify-content: center;
+  margin-left: 40%;
+}
+h2 {
+  text-align: center;
+  font-size: 45px;
+  color:teal;
+  animation-name: animationtest;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+}
+form{
+  background:rgba(18, 80, 121, 0.5);;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 0 50px;
+  height: 100%;
+  width: 300px;
+  text-align: center;
+  border-radius: 10px;
+  margin: 20px 0 10px 0;
+}
+button{
+  width: 15rem;
+  height: 55px;
+  border: none;
+  color:black;
+  border-radius: 10px;
+  transition: ease-out 0.3s;
+  font-size: 1.6rem;
+  outline: none;
+  border: 3px solid ;
+  position: relative;
+  z-index: 1;
+  margin-top: 20px;
+}
+button:hover {
+  color: #fff;
+  cursor: pointer;
+}
+button::before {
+  transition: 0.5 all ease ;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  right: 50%;
+  bottom: 0;
+  opacity: 0;
+  content: "";
+  background-color:teal;
+  border-radius: 10px;
+}
+button:hover::before {
+  transition: 0.5s all ease;
+  left: 0;
+  right: 0;
+  opacity: 1;
+  z-index: -1;
+}
+input{
+  background-color: #FFFFFF;
+  border: none;
+  padding: 12px 15px;
+  margin: 8px 0;
+  width:100%;
+  border-radius: 10px;
+}
+@keyframes animationtest {
+  0%{
+      opacity: 0;
+      transform: translate(0, -100px);
+  }
+
+  80%{
+      transform: translate(0, -20px);
+  }
+  
+  100%{
+      opacity: 1;
+      transform: translate(0,0);
+  }
+}
+.btn:link, .btn:visited {
+  margin-top: 1rem;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 1.5rem 4rem;
+  display: inline-block;
+  border-radius: 10rem;
+  font-size: 1.6rem;
+  position: relative; 
+  margin-left: 0;
+}
+  .btn:hover,
+.btn-login:hover,
+.btn-name:hover {
+  transform: translateY(-0.3rem);
+  box-shadow: 0 0.5rem 2rem rgba(0, 0, 0, 0.2); }
+  .btn:active,
+.btn-login:active,
+.btn-name:active {
+  outline: none;
+  transform: translateY(-0.1rem);
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2); }
+  .btn::after,
+.btn-login::after {
+  content: "";
+  display: inline-block;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 10rem;
+  background-color: #fff;
+  z-index: -1;
+  transition: all .4s; }
+  .btn:hover::after,
+.btn-login:hover::after,
+.btn-name:hover::after {
+  transform: scaleX(1.4) scaleY(1.6);
+  opacity: 0; }

@@ -1,0 +1,193 @@
+*{
+	margin:0;
+	padding: 0;
+	box-sizing: border-box;
+}
+body{
+	background-image:linear-gradient(to right bottom, rgba(142, 158, 252, .3), rgba(28, 62, 255, .5)), url('/img/lamviecnhom.jpg') ;
+	background-size: cover;	
+	font-family: sans-serif;
+}
+.login{
+	width: 100vw;
+	height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.form{
+	position: relative;
+	width: 100%;
+	max-width: 400px;
+	padding: 80px 40px 40px;
+	background: rgba(0, 1, 1, 0.7);
+	border-radius: 20px;
+	color: #fff;
+	box-shadow: 0 15px 25px rgba(0, 1, 1, 0.7);
+}
+.form::before{
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 50%;
+	height: 100%;
+	background: rgba (255, 255, 255, 0.08);
+	transform-origin: bottom left;
+	border-radius: 12px;
+	pointer-events: none;
+}
+.form img{
+	position: absolute;
+	top: -50px;
+	left: calc(50% - 50px);
+	width: 100px;
+	border-radius: 50%;
+}
+.form h2{
+	text-align: center;
+	letter-spacing: 1px;
+	margin-bottom: 40px;
+	color:fuchsia;
+}
+.form .input-lg{
+	position: relative;
+}
+.form .input-lg input{
+	width: 100%;
+	padding: 10px 0;
+	font-size: .9rem;
+	letter-spacing: 1.2px;
+	margin-bottom: 30px;
+	border: none;
+	background-color: transparent;
+	color: inherit;
+	border-bottom: 1px solid white;
+	outline: none;
+}
+.form .input-lg label{
+	position: absolute;
+	top: 0;
+	left: 0;
+	padding: 10px 0;
+	font-size: .9rem;
+	pointer-events: none;
+	transition: .4s ease-out;
+}
+.form .input-lg input:focus + label,
+.form .input-lg input:valid + label{
+	transform: translateY(-18px);
+	color:fuchsia;
+	font-size: 12px;
+}
+.input-lg #mat{
+	position: absolute;
+	top: -13px;
+	right: 10px;
+	height: 100%;
+	display: flex;
+	align-items: center;
+	font-size: 1.2em;
+	cursor: pointer;
+	user-select: none;
+	color: white;
+	font-family:fontAwesome;
+}
+.input-lg #mat::before{
+	content: '\f070';
+}
+.input-lg #mat.hide::before{
+	content: '\f06e';
+}
+.btn-new{	
+	display: block;
+	margin-left: auto ;
+	width: 120px;
+	height: 36px;
+	border:none;
+	color:fuchsia;
+	background-color:white;
+	border-radius: 5px;
+	box-shadow: inset 0 0 0 0 cyan;
+	transition: ease-out 0.3s;
+	font-size: 1rem;
+	outline: none;
+	cursor: pointer;
+	letter-spacing: 1.2px;
+}
+.btn-1{
+	text-decoration: none;
+	text-align: center;
+	display: block;
+	float: left;
+	margin-left: auto ;
+	width: 120px;
+	height: 36px;
+	border:none;
+	color:fuchsia;
+	background-color:white;
+	border-radius: 5px;
+	box-shadow: inset 0 0 0 0 cyan;
+	transition: ease-out 0.3s;
+	font-size: 1rem;
+	outline: none;
+	padding-top: .5rem;
+	cursor: pointer;
+	letter-spacing: 1.2px;
+}
+.btn-new:hover,.btn-1:hover{
+	box-shadow: inset 120px 0 0 cyan;
+	cursor: pointer;
+	color: brown;
+}
+.forgot-pwd{
+	color: inherit;
+}
+#forgot-pwd{
+	position: absolute;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	top:-5rem;
+	left: 0;
+	right: 0;
+	z-index: 1;
+	opacity: 0;
+	background: url(/img/lamviecnhom.jpg) no-repeat center;
+	transition: 0.6s;
+}
+#forgot-pwd:target{
+	height: 100%;
+	opacity: 2;
+	margin-top: 5rem;
+}
+.form .query{
+	margin-top: 20px 0;
+}
+.form .query p{
+	margin-top: 10px;
+	font-weight: 400;
+}
+.form .query p a{
+	text-decoration: none;
+	color: cyan;
+	transition: linear 0.2s;
+}
+.form .query p a:hover {
+	text-decoration: underline;
+	font-weight: 800;
+}
+.close{
+	position: absolute;
+	right: 1.5rem;
+	top: 0.5rem;
+	font-size: 2rem;
+	font-weight: 900;
+	text-decoration: none;
+	color: inherit;
+}
+.close:hover{
+	color: cyan;
+	transition: 0.8s;
+}
+

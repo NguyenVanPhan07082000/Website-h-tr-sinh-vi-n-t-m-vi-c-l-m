@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link href="{{asset('fontend/css/infor.css')}}" rel="stylesheet" type="text/css"/>
+        <link href="{{asset('public/fontend/css/infor.css')}}" rel="stylesheet" type="text/css"/>
         <title>Thông tin cá nhân</title>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
         <script>

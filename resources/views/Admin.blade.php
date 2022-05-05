@@ -6,22 +6,22 @@
 <meta name="keywords" content="Visitors Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
 Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
-<link rel="stylesheet" href="{{asset('backend/css/bootstrap.min.css')}}" >
+<link rel="stylesheet" href="{{asset('public/backend/css/bootstrap.min.css')}}" >
 
-<link href="{{asset('backend/css/style.css')}}" rel='stylesheet' type='text/css' />
-<link href="{{asset('backend/css/style-responsive.css')}}" rel="stylesheet"/>
+<link href="{{asset('public/backend/css/style.css')}}" rel='stylesheet' type='text/css' />
+<link href="{{asset('public/backend/css/style-responsive.css')}}" rel="stylesheet"/>
 
 <link href='//fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
 
-<link rel="stylesheet" href="{{asset('backend/css/font.css')}}" type="text/css"/>
-<link href="{{asset('backend/css/font-awesome.css')}}" rel="stylesheet"> 
-<link rel="stylesheet" href="{{asset('backend/css/morris.css')}}" type="text/css"/>
+<link rel="stylesheet" href="{{asset('public/backend/css/font.css')}}" type="text/css"/>
+<link href="{{asset('public/backend/css/font-awesome.css')}}" rel="stylesheet"> 
+<link rel="stylesheet" href="{{asset('public/backend/css/morris.css')}}" type="text/css"/>
 
-<link rel="stylesheet" href="{{asset('backend/css/monthly.css')}}">
+<link rel="stylesheet" href="{{asset('public/backend/css/monthly.css')}}">
 
-<script src="{{asset('backend/js/jquery2.0.3.min.js')}}"></script>
-<script src="{{asset('backend/js/raphael-min.js')}}"></script>
-<script src="{{asset('backend/js/morris.js')}}"></script>
+<script src="{{asset('public/backend/js/jquery2.0.3.min.js')}}"></script>
+<script src="{{asset('public/backend/js/raphael-min.js')}}"></script>
+<script src="{{asset('public/backend/js/morris.js')}}"></script>
 </head>
 <body>
 <section id="container">
@@ -115,7 +115,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         </li>
                         <li>
                             <a href="#">
-                                <span class="photo"><img alt="avatar" src="{{asset('backend/img/3.png')}}"></span>
+                                <span class="photo"><img alt="avatar" src="{{asset('public/backend/img/3.png')}}"></span>
                                         <span class="subject">
                                         <span class="from">Jonathan Smith</span>
                                         <span class="time">Just now</span>
@@ -127,7 +127,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         </li>
                         <li>
                             <a href="#">
-                                <span class="photo"><img alt="avatar" src="{{asset('backend/img/1.png')}}"></span>
+                                <span class="photo"><img alt="avatar" src="{{asset('public/backend/img/1.png')}}"></span>
                                         <span class="subject">
                                         <span class="from">Jane Doe</span>
                                         <span class="time">2 min ago</span>
@@ -139,7 +139,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         </li>
                         <li>
                             <a href="#">
-                                <span class="photo"><img alt="avatar" src="{{asset('backend/img/3.png')}}"></span>
+                                <span class="photo"><img alt="avatar" src="{{asset('public/backend/img/3.png')}}"></span>
                                         <span class="subject">
                                         <span class="from">Tasi sam</span>
                                         <span class="time">2 days ago</span>
@@ -151,7 +151,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         </li>
                         <li>
                             <a href="#">
-                                <span class="photo"><img alt="avatar" src="{{asset('backend/img/2.png')}}"></span>
+                                <span class="photo"><img alt="avatar" src="{{asset('public/backend/img/2.png')}}"></span>
                                         <span class="subject">
                                         <span class="from">Mr. Perfect</span>
                                         <span class="time">2 hour ago</span>
@@ -214,7 +214,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     @if(session()->get('name'))
                         <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                             
-                                <img alt="" src="{{asset('backend/img'.'/'.session()->get('img'))}}">
+                                <img alt="" src="{{asset('public/backend/img'.'/'.session()->get('img'))}}">
                                 <span class="username">{{session()->get('name')}}</span>
                             
                             <b class="caret"></b>
@@ -264,12 +264,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 </section>
 
-<script src="{{asset('backend/js/bootstrap.js')}}"></script>
-<script src="{{asset('backend/js/jquery.dcjqaccordion.2.7.js')}}"></script>
-<script src="{{asset('backend/js/scripts.js')}}"></script>
-<script src="{{asset('backend/js/jquery.slimscroll.js')}}"></script>
-<script src="{{asset('backend/js/jquery.nicescroll.js')}}"></script>
-<script src="{{asset('backend/js/jquery.scrollTo.js')}}"></script>
+<script src="{{asset('public/backend/js/bootstrap.js')}}"></script>
+<script src="{{asset('public/backend/js/jquery.dcjqaccordion.2.7.js')}}"></script>
+<script src="{{asset('public/backend/js/scripts.js')}}"></script>
+<script src="{{asset('public/backend/js/jquery.slimscroll.js')}}"></script>
+<script src="{{asset('public/backend/js/jquery.nicescroll.js')}}"></script>
+<script src="{{asset('public/backend/js/jquery.scrollTo.js')}}"></script>
 
 <script>
 	$(document).ready(function() {
@@ -327,7 +327,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	});
 	</script>
 
-	<script type="text/javascript" src="{{asset('backend/js/monthly.js')}}"></script>
+	<script type="text/javascript" src="{{asset('public/backend/js/monthly.js')}}"></script>
 	<script type="text/javascript">
 		$(window).load( function() {
 

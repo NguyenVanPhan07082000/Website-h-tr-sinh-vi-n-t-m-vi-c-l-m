@@ -1,16 +1,16 @@
 @extends('welcome')
 @section('css')
-    <link rel="stylesheet" type="text/css" href="{{asset('fontend/css/info-job.css')}}"/>
+    <link rel="stylesheet" type="text/css" href="{{asset('public/fontend/css/info-job.css')}}"/>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=lato:100,300,400,700,900" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
         integrity="sha384-50oBUHEmvpQ+1lw4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndỌK28anvf" rossorigin="anonymous">
-    <script type="text/javascript" src="{{asset('fontend/js/jquery-1.9.1.min.js')}}"> </script>
-	<script type="text/javascript" src="{{asset('fontend/js/Slider.js')}}"></script>
-    <script type="text/javascript" src="{{asset('fontend/js/jquery.js')}}"></script>
+    <script type="text/javascript" src="{{asset('public/fontend/js/jquery-1.9.1.min.js')}}"> </script>
+	<script type="text/javascript" src="{{asset('public/fontend/js/Slider.js')}}"></script>
+    <script type="text/javascript" src="{{asset('public/fontend/js/jquery.js')}}"></script>
 @endsection
 @section('content')
 <div class="info_job info_job--1">
-    <img src="{{asset('fontend/img/background_re.png')}}" class="img_chamngon" alt="chamngon"/>
+    <img src="{{asset('public/fontend/img/background_re.png')}}" class="img_chamngon" alt="chamngon"/>
     <h2 class="title-dangtin">Đăng Tin Tuyển Dụng</h2>
     <form action="{{URL::to('/save-dang-tuyen')}}" method="POST">
         {{ csrf_field() }}

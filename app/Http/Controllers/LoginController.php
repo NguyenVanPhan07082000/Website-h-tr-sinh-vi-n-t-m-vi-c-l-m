@@ -31,14 +31,14 @@ class LoginController extends Controller
             }
             foreach ($users as $admin) {
                 $admin = $admin->HotenAdmin;
-                $admin_img = $admin->Hinhanh;
-                $id = $admin->idAdmin;
+                // $admin_img = $admin->Hinhanh;
+                // $id = $admin->idAdmin;
             }
             // session()->flash('fail', $idadmin);
             session()->put('name',$admin);
-            session()->put('img',$admin_img);
+            // session()->put('img',$admin_img);
             session()->put('admin',$admin);
-            session()->put('id',$id);
+            // session()->put('id',$id);
             // dd(session()->get('img'));
             return redirect('/admin');
         }

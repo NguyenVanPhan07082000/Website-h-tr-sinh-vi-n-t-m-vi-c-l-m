@@ -1,16 +1,16 @@
 @extends('welcome')
 @section('css')
-<link rel="stylesheet" type="text/css" href="{{asset('fontend/css/info-job.css')}}"/>
+<link rel="stylesheet" type="text/css" href="{{asset('public/fontend/css/info-job.css')}}"/>
 @endsection
 @section('content')
 <div class="info_job">
-    <img src="{{asset('fontend/img/chamngon.jpg')}}" class="img_chamngon" alt="chamngon"/>
+    <img src="{{asset('public/fontend/img/chamngon.jpg')}}" class="img_chamngon" alt="chamngon"/>
     @foreach ($info_job as $key => $i4 )
     <div class="info_job--name">
         <div class="row">
             <div class="job job--new ">
                 <div class="col-1-of-4">
-                    <img src="{{asset('fontend/img/company'.'/'.$i4->Hinhanh)}}" class="logo-company" alt="logo-company"/>
+                    <img src="{{asset('public/fontend/img/company'.'/'.$i4->Hinhanh)}}" class="logo-company" alt="logo-company"/>
                 </div>
                 <div class="col-2-of-4 job_info job_info--new">
                     <p class="job_info job_info--name_job--new">
@@ -140,7 +140,7 @@
                     <div class="row">
                         <div class="job info_company--new ">
                             <div class="col-1-of-4">
-                                <img src="{{asset('fontend/img/company'.'/'.$i4->Hinhanh)}}" class="logo-company" alt="logo-company"/>
+                                <img src="{{asset('public/fontend/img/company'.'/'.$i4->Hinhanh)}}" class="logo-company" alt="logo-company"/>
                             </div>
                             <div class="col-3-of-4 job_info job_info--new">
                                 <p class="job_info job_info--name_job--new">

@@ -11,9 +11,9 @@
         integrity="sha384-50oBUHEmvpQ+1lw4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndỌK28anvf" rossorigin="anonymous">
     @yield('css')
     <link href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.css" rel="stylesheet"  type='text/css'>
-    <script type="text/javascript" src="{{asset('fontend/js/jquery-1.9.1.min.js')}}"> </script>
-	<script type="text/javascript" src="{{asset('fontend/js/Slider.js')}}"></script>
-    <script type="text/javascript" src="{{asset('fontend/js/jquery.js')}}"></script>
+    <script type="text/javascript" src="{{asset('public/fontend/js/jquery-1.9.1.min.js')}}"> </script>
+	<script type="text/javascript" src="{{asset('public/fontend/js/Slider.js')}}"></script>
+    <script type="text/javascript" src="{{asset('public/fontend/js/jquery.js')}}"></script>
     <title>Website hỗ trợ sinh viên CNTT tìm kiếm việc làm Blue Star</title>
 </head>
 <body>
@@ -27,7 +27,7 @@
         }
     ?>
     <div class="menu">
-        <a href="{{URL::to('/trang-chu')}}"><img src="{{asset('fontend/img/logo_top.png')}}" class="menu__logo" alt="logo_top"></a>
+        <a href="{{URL::to('/trang-chu')}}"><img src="{{asset('public/fontend/img/logo_top.png')}}" class="menu__logo" alt="logo_top"></a>
         <nav>
             <ul class="menu__main">
                 <li class="menu__main--content"><a href="" class="menu__main--content__link">Tìm việc làm</a>
@@ -45,7 +45,7 @@
                     </ul>
                 </li>
                 @if(session()->get('name'))
-                    <li class="menu__main--content"><p class="user"><img src="{{asset('fontend/img/avatar'.'/'.session()->get('img'))}}" align="center" class="img_menu" alt="img"/>{{session()->get('name')}}</p>
+                    <li class="menu__main--content"><p class="user"><img src="{{asset('public/fontend/img/avatar'.'/'.session()->get('img'))}}" align="center" class="img_menu" alt="img"/>{{session()->get('name')}}</p>
                         <ul class="menu__main--content_ul">
                             <li class="menu__main--content_li"><a href="{{URL::to('/profile')}}" class="menu__main--content_li--a">Profile</a></li>
                             <li class="menu__main--content_li"><a href="{{URL::to('/logout')}}" class="menu__main--content_li--a">Đăng Xuất</a></li>
@@ -94,7 +94,7 @@
 
     <footer class="footer">
         <div class="footer_logo">
-            <img src="{{asset('fontend/img/logo_top.png')}}" alt="footer_logo"/> 
+            <img src="{{asset('public/fontend/img/logo_top.png')}}" alt="footer_logo"/> 
         </div>
         <div class="footer_info">
             <div class="row footer_info--top">

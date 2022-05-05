@@ -4,7 +4,7 @@
         <meta charset="UTF-8">
         <script type="text/javascript" src="http://code.jquery.com/jquery-3.4.1.min.js"></script>		
         <script src="https://kit.fontawesome.com/a076d05399.js"></script>
-        <link rel="stylesheet" href="{{asset('fontend/css/login.css')}}">
+        <link rel="stylesheet" href="{{asset('public/fontend/css/login.css')}}">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" crossorigin="anonymous">
         <title>Login</title>

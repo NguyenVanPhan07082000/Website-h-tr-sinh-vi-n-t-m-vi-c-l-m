@@ -73,7 +73,7 @@
                         <td class="td td_stt">{{$all_job->idCamnan}}</td>
                         <td class="td td_tcn">{{$all_job->Tencamnan}}</td>
                         <td class="td td_td">{{$all_job->Tieude}}</td>
-                        <td class="td td_ha"><img src="{{asset('fontend/img/camnan').'/'.$all_job->Hinhanh}}" class="img_camnan" alt="img"></td>
+                        <td class="td td_ha"><img src="{{asset('public/fontend/img/camnan').'/'.$all_job->Hinhanh}}" class="img_camnan" alt="img"></td>
                         <td class="td td_gt">{{$all_job->Gioithieu}}</td>
                         <td class="td td_sk">
                             <a onclick="return confirm('Bạn có chắc muốn xoá?')" href="{{URL::to('/admin/delete-camnang/'.$all_job->idCamnan)}}" class="btn-new">Xoá</a>

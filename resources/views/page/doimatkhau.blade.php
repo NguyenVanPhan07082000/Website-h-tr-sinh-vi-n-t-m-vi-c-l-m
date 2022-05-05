@@ -4,7 +4,7 @@
         <meta charset="UTF-8">
         <script type="text/javascript" src="http://code.jquery.com/jquery-3.4.1.min.js"></script>		
         <script src="https://kit.fontawesome.com/a076d05399.js"></script>
-        <link rel="stylesheet" href="{{asset('fontend/css/changepw.css')}}">
+        <link rel="stylesheet" href="{{asset('public/fontend/css/changepw.css')}}">
         <title>Change Password</title>
     </head>
     <body>

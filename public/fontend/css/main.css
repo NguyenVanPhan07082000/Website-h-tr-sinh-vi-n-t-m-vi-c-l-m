@@ -83,16 +83,16 @@ body {
   animation-duration: 2s; }
   .heading-primary_main {
     display: block;
-    font-size: 6.2rem;
-    font-weight: 40rem;
+    font-size: 9rem;
+    font-weight: bold;
     letter-spacing: 1.5rem;
     text-align: center; }
     @media (max-width: 600px) {
       .heading-primary_main {
         margin-left: .5rem;
         letter-spacing: 1rem;
-        font-size: 3rem;
-        font-weight: 30rem;
+        font-size: 9rem;
+        font-weight: bold;
         display: block; } }
   .heading-primary_sub {
     display: block;
@@ -103,7 +103,7 @@ body {
     @media (max-width: 600px) {
       .heading-primary_sub {
         letter-spacing: .5rem;
-        font-size: 1.5rem; } }
+        font-size: 3rem; } }
 
 .btn:link, .btn:visited {
   margin-top: 1rem;
@@ -273,18 +273,21 @@ body {
         padding-top: 10%; } }
     .header__profile__avatar {
       height: 8rem;
-      margin-top: 1rem;
+      margin-top: -1rem;
       margin-right: 1rem;
-      margin-bottom: 1rem;
+      margin-bottom: -1rem;
+      margin-left: -1rem;
       clip-path: circle(50% at 50% 50%); }
     @media (max-width: 900px) {
       .header__profile {
-        top: 4rem;
-        right: 4rem; } }
+        /* top: 4rem; */
+        right: 4rem; 
+      } }
     @media (max-width: 600px) {
       .header__profile {
-        top: 3.5rem;
-        right: 3.5rem; } }
+        /* top: 3.5rem; */
+        right: 3.5rem;
+       } }
   .header__login {
     top: 40%;
     text-align: right;
@@ -912,6 +915,11 @@ body {
 .text {
   position: relative;
   color: red;
+  height: 100px;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  display: -webkit-box;
   font-size: 1.8rem;
   font-weight: 500;
   margin-top: 1rem;

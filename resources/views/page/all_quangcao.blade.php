@@ -62,7 +62,7 @@
                 @foreach ($all_Job as $key => $all_job)
                     <tr class="table_rows table_row-content">
                         <td class="td td_stt">{{$all_job->idQuangcao}}</td>
-                        <td class="td td_ha"><img src="{{asset('fontend/img/Quangcao').'/'.$all_job->Hinhanh}}" class="img_camnan" alt="img"></td>
+                        <td class="td td_ha"><img src="{{asset('public/fontend/img/Quangcao').'/'.$all_job->Hinhanh}}" class="img_camnan" alt="img"></td>
                         <td class="td td_tcn">{{$all_job->Slogan}}</td>
                         <td class="td td_td">{{$all_job->Link}}</td>
                         <td class="td td_sk">

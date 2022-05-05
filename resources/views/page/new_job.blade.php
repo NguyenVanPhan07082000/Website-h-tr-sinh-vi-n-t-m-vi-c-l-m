@@ -1,9 +1,9 @@
 @extends('welcome')
 @section('css')
-    <link rel="stylesheet" type="text/css" href="{{asset('fontend/css/job.css')}}"/>
+    <link rel="stylesheet" type="text/css" href="{{asset('public/fontend/css/job.css')}}"/>
 @endsection
 @section('content')
-<img src="{{asset('fontend/img/chamngon.jpg')}}" class="img_chamngon" alt="chamngon"/>
+<img src="{{asset('public/fontend/img/chamngon.jpg')}}" class="img_chamngon" alt="chamngon"/>
 <div class="page_job row">
     <div class="col-2-of-3">
         <div class="row title">
@@ -19,7 +19,7 @@
                 @foreach ($newjob as $key => $nj)
                     <div class="job job--new ">
                         <div class="col-1-of-4">
-                            <img src="{{asset('fontend/img/company'.'/'.$nj->Hinhanh)}}" class="logo-company" alt="logo-company"/>
+                            <img src="{{asset('public/fontend/img/company'.'/'.$nj->Hinhanh)}}" class="logo-company" alt="logo-company"/>
                         </div>
                         <div class="col-2-of-4 job_info job_info--new">
                             <p class="job_info job_info--name_job--new">
@@ -56,7 +56,7 @@
                 @foreach ($jobnoibac as $key => $jb)
                     <div class="job job--1">
                         <div class="col-1-of-4">
-                            <img src="{{asset('fontend/img/company'.'/'.$jb->Hinhanh)}}" class="logo-company_new--1" alt="logo-company"/>
+                            <img src="{{asset('public/fontend/img/company'.'/'.$jb->Hinhanh)}}" class="logo-company_new--1" alt="logo-company"/>
                         </div>
                         <div class="col-3-of-4 job_info--1 job_info--1_new">
                             <p class="job_info--name_job--new_2">

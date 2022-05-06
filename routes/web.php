@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\AdminContrller;
+use App\Http\Controllers\MyCV;
 
 /*
 |--------------------------------------------------------------------------
@@ -80,6 +81,16 @@ Route::get('/tat-ca-viec-lam',[HomeController::class, 'all_job']);
 Route::get('/tim-ung-vien',[HomeController::class, 'timungvien']);
 Route::get('/dang-tuyen',[HomeController::class, 'dang_tuyen']);
 Route::post('/save-dang-tuyen',[HomeController::class, 'save_dang_tuyen']);
+//CV-1
+Route::get('/cv-mau-1',[MyCV::class, 'cv1']);
+Route::get('/cv-mau-2',[MyCV::class, 'cv2']);
+Route::get('/cv-mau-3',[MyCV::class, 'cv3']);
+Route::get('/cv-mau-4',[MyCV::class, 'cv4']);
+Route::get('/cv-mau-5',[MyCV::class, 'cv5']);
+// Route::get('/tat-ca-viec-lam',[HomeController::class, 'all_job']);
+// Route::get('/tim-ung-vien',[HomeController::class, 'timungvien']);
+// Route::get('/dang-tuyen',[HomeController::class, 'dang_tuyen']);
+// Route::post('/save-dang-tuyen',[HomeController::class, 'save_dang_tuyen']);
 
 
 

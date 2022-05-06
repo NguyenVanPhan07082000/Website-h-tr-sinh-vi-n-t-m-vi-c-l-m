@@ -76,7 +76,7 @@ body{
 }
 .form .input-lg input:focus + label,
 .form .input-lg input:valid + label{
-	transform: translateY(-18px);
+	transform: translateY(-30px);
 	color:fuchsia;
 	font-size: 12px;
 }
@@ -190,4 +190,3 @@ body{
 	color: cyan;
 	transition: 0.8s;
 }
-

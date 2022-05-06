@@ -14,6 +14,8 @@
     <script type="text/javascript" src="{{asset('public/fontend/js/jquery-1.9.1.min.js')}}"> </script>
 	<script type="text/javascript" src="{{asset('public/fontend/js/Slider.js')}}"></script>
     <script type="text/javascript" src="{{asset('public/fontend/js/jquery.js')}}"></script>
+    <script type="text/javascript" src="{{asset('public/fontend/js/cv-1.js')}}"></script>
+    <script type="text/javascript" src="{{asset('public/fontend/js/cv-5.js')}}"></script>
     <title>Website hỗ trợ sinh viên CNTT tìm kiếm việc làm Blue Star</title>
 </head>
 <body>

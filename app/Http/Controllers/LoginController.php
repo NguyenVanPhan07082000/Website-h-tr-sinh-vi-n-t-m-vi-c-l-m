@@ -22,7 +22,7 @@ class LoginController extends Controller
         if($users==null)
         {
             $users = DB::select('select * from admin where User = ? and Password = ?', [$user,$pass]);
-            if($users==null)
+            if(!$users)
             {
                 // $request->session()->put('user',$user);
                 // session()->flash('fail', session()->get('user'));
@@ -30,13 +30,13 @@ class LoginController extends Controller
                 return redirect('/login');
             }
             foreach ($users as $admin) {
-                $admin = $admin->HotenAdmin;
-                // $admin_img = $admin->Hinhanh;
+                $admin_name = $admin->HotenAdmin;
+                $admin_img = $admin->Hinhanh;
                 // $id = $admin->idAdmin;
             }
             // session()->flash('fail', $idadmin);
-            session()->put('name',$admin);
-            // session()->put('img',$admin_img);
+            session()->put('name',$admin_name);
+            session()->put('img',$admin_img);
             session()->put('admin',$admin);
             // session()->put('id',$id);
             // dd(session()->get('img'));

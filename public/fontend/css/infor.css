@@ -27,6 +27,9 @@ h1{
     border-radius: 10px;
     background-color: rgba(18, 80, 121, 0.5);
 }
+.infor-form form{
+    text-align: center;
+}
 .box{
     display: flex;
     flex-wrap: wrap;
@@ -180,11 +183,12 @@ a:hover span:nth-child(4){
 }
 .btn-1{
 	text-decoration: none;
+    align-items: center;
 	text-align: center;
 	display: block;
 	float: left;
 	margin-left: auto ;
-	width: 120px;
+	width: 200px;
 	height: 36px;
 	border:none;
 	color:fuchsia;
@@ -197,9 +201,10 @@ a:hover span:nth-child(4){
 	padding-top: .5rem;
 	cursor: pointer;
 	letter-spacing: 1.2px;
+    padding-bottom: 10px;
 }
 .btn-1:hover{
-	box-shadow: inset 120px 0 0 cyan;
+	box-shadow: inset 300px 0 0 cyan;
 	cursor: pointer;
 	color: brown;
 }

@@ -22,7 +22,7 @@
         <div class="infor-form">
             <form action="{{URL::to('/save-tuyen-dung')}}" method="POST" enctype="multipart/form-data">
                 {{ csrf_field() }}
-                <h1>Thông tin cá nhân</h1>
+                <h1>Thông tin công ty</h1>
                 <div class="box">
                     <div class="input-box">
                         <span class="thuoctinh">Tên Công Ty  </span>

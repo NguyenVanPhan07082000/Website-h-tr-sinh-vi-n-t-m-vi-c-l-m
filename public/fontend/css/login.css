@@ -1,192 +1,182 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;1,100;1,200;1,300;1,400&display=swap');
 *{
-	margin:0;
-	padding: 0;
-	box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
-body{
-	background-image:linear-gradient(to right bottom, rgba(142, 158, 252, .3), rgba(28, 62, 255, .5)), url('/img/lamviecnhom.jpg') ;
-	background-size: cover;	
-	font-family: sans-serif;
+body {
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: url('https://img4.thuthuatphanmem.vn/uploads/2020/12/17/hinh-anh-lam-viec-nhom-dep-nhat_103349853.jpg') no-repeat center;
+    background-size: cover;
+    transition: 0.5s;
 }
-.login{
-	width: 100vw;
-	height: 100vh;
-	display: flex;
-	justify-content: center;
-	align-items: center;
+.body.active{
+    background: #f43648;
+}
+.container {
+    position: relative;
+    width: 800px;
+    height: 500px;
+    margin: 20px;
+}
+.blueBg{
+    position: absolute;
+    top:40px;
+    width: 100%;
+    height:420px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background:rgba(255, 255, 255, 0.2);
+    box-shadow: 0 5px 45px rgba(0, 0, 0, 0.15);
+}
+.blueBg .box{
+    position: relative;
+    width:50%;
+    height:100%;
+    display: flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction: column;
+}
+.blueBg .box h2{
+    background:rgba(255, 255, 255, 0.7);
+    padding:5px 5px;
+    color: #333;
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+.blueBg .box button{
+    cursor: pointer;
+    padding:10px 20px;
+    background:#fff;
+    color:#333;
+    font-size: 16px;
+    font-weight: 500;
+    border: none;
+}
+.formBx{
+    position:absolute;
+    top:0;
+    left:0;
+    width:50%;
+    height:100%;
+    background: #fff;
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 5px 45px rbga(0, 0, 0, 0.25);
+    transition:0.5s ease-in-out;
+    overflow: hidden;
+    border-radius: 20px;
+}
+.formBx.active{
+    left: 50%;
+}
+.formBx .formdata{
+    position: absolute;
+    left: 0;
+    width: 100%;
+    padding:50px;
+    transition: 0.5s;
+}
+.formBx .signinForm{
+    transition-delay: 0.25s;
+}
+.formBx.active .signinForm{
+    left: -100%;
+    transition-delay: 0s;
+}
+.formBx .signupForm{
+    left: 100%;
+    transition-delay: 0s;
+}
+.formBx.active .signupForm{
+    left: 0;
+    transition-delay: 0.25s;
+}
+.formBx .formdata form{
+    width: 100%;
+    display:flex;
+    flex-direction: column; 
+}
+.formBx .formdata form h3{
+    font-size :1.5em;
+    color: #333;
+    margin-bottom:20px;
+    font-weight:500;
+}
+.formBx .formdata form input{
+    width: 100%;
+    margin-bottom:20px;
+    padding:10px;
+    outline: none;
+    font-size:16px;
+    border:1px solid #333;
+}
+.formBx .formdata form input[type="submit"]{
+    background:#03a9f4;
+    border: none;
+    color:#fff;
+    max-width:100px;
+    cursor: pointer;
+}
+.formBx .formdata form .forgot{
+    color:#333;
+}
+@media(max-width: 991px){
+    .container{
+        max-width:400px;
+        height:650px;
+        display:flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .container .blueBg{
+        top:0;
+        height: 100%; 
+    }
+    .formBx{
+        width: 100%;
+        height: 500px;
+        top:0;
+        box-shadow: none;
+    }
+    .blueBg .box {
+        position: absolute;
+        width: 100%;
+        height: 150px;
+        bottom:0;
+    }
+    .box.signin{
+        top:0;
+    }
+    .formBx.active{
+        left:0;
+        top: 150px;
+    }
+}
+.select-permission{
+    width: 100%;
+    margin-bottom:20px;
+    padding:10px;
+    outline: none;
+    font-size:16px;
+    border:1px solid #333;
+}
+.button{
+    text-align: center;
+    align-items: center;
 }
 .form{
-	position: relative;
-	width: 100%;
-	max-width: 400px;
-	padding: 80px 40px 40px;
-	background: rgba(0, 1, 1, 0.7);
-	border-radius: 20px;
-	color: #fff;
-	box-shadow: 0 15px 25px rgba(0, 1, 1, 0.7);
+    align-items: center;
 }
-.form::before{
-	content: "";
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 50%;
-	height: 100%;
-	background: rgba (255, 255, 255, 0.08);
-	transform-origin: bottom left;
-	border-radius: 12px;
-	pointer-events: none;
-}
-.form img{
-	position: absolute;
-	top: -50px;
-	left: calc(50% - 50px);
-	width: 100px;
-	border-radius: 50%;
-}
-.form h2{
-	text-align: center;
-	letter-spacing: 1px;
-	margin-bottom: 40px;
-	color:fuchsia;
-}
-.form .input-lg{
-	position: relative;
-}
-.form .input-lg input{
-	width: 100%;
-	padding: 10px 0;
-	font-size: .9rem;
-	letter-spacing: 1.2px;
-	margin-bottom: 30px;
-	border: none;
-	background-color: transparent;
-	color: inherit;
-	border-bottom: 1px solid white;
-	outline: none;
-}
-.form .input-lg label{
-	position: absolute;
-	top: 0;
-	left: 0;
-	padding: 10px 0;
-	font-size: .9rem;
-	pointer-events: none;
-	transition: .4s ease-out;
-}
-.form .input-lg input:focus + label,
-.form .input-lg input:valid + label{
-	transform: translateY(-30px);
-	color:fuchsia;
-	font-size: 12px;
-}
-.input-lg #mat{
-	position: absolute;
-	top: -13px;
-	right: 10px;
-	height: 100%;
-	display: flex;
-	align-items: center;
-	font-size: 1.2em;
-	cursor: pointer;
-	user-select: none;
-	color: white;
-	font-family:fontAwesome;
-}
-.input-lg #mat::before{
-	content: '\f070';
-}
-.input-lg #mat.hide::before{
-	content: '\f06e';
-}
-.btn-new{	
-	display: block;
-	margin-left: auto ;
-	width: 120px;
-	height: 36px;
-	border:none;
-	color:fuchsia;
-	background-color:white;
-	border-radius: 5px;
-	box-shadow: inset 0 0 0 0 cyan;
-	transition: ease-out 0.3s;
-	font-size: 1rem;
-	outline: none;
-	cursor: pointer;
-	letter-spacing: 1.2px;
-}
-.btn-1{
-	text-decoration: none;
-	text-align: center;
-	display: block;
-	float: left;
-	margin-left: auto ;
-	width: 120px;
-	height: 36px;
-	border:none;
-	color:fuchsia;
-	background-color:white;
-	border-radius: 5px;
-	box-shadow: inset 0 0 0 0 cyan;
-	transition: ease-out 0.3s;
-	font-size: 1rem;
-	outline: none;
-	padding-top: .5rem;
-	cursor: pointer;
-	letter-spacing: 1.2px;
-}
-.btn-new:hover,.btn-1:hover{
-	box-shadow: inset 120px 0 0 cyan;
-	cursor: pointer;
-	color: brown;
-}
-.forgot-pwd{
-	color: inherit;
-}
-#forgot-pwd{
-	position: absolute;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	top:-5rem;
-	left: 0;
-	right: 0;
-	z-index: 1;
-	opacity: 0;
-	background: url(/img/lamviecnhom.jpg) no-repeat center;
-	transition: 0.6s;
-}
-#forgot-pwd:target{
-	height: 100%;
-	opacity: 2;
-	margin-top: 5rem;
-}
-.form .query{
-	margin-top: 20px 0;
-}
-.form .query p{
-	margin-top: 10px;
-	font-weight: 400;
-}
-.form .query p a{
-	text-decoration: none;
-	color: cyan;
-	transition: linear 0.2s;
-}
-.form .query p a:hover {
-	text-decoration: underline;
-	font-weight: 800;
-}
-.close{
-	position: absolute;
-	right: 1.5rem;
-	top: 0.5rem;
-	font-size: 2rem;
-	font-weight: 900;
-	text-decoration: none;
-	color: inherit;
-}
-.close:hover{
-	color: cyan;
-	transition: 0.8s;
+.header-sign{
+    text-align: center; 
+    font-size: 40px; 
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
 }

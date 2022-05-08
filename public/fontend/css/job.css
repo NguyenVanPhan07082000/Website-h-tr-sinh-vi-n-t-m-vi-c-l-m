@@ -124,7 +124,7 @@
           -moz-transition: ease-in .35s;
           -webkit-transition: ease-in .35s; }
       .menu__main--content_ul {
-        width: 28rem;
+        width: 20rem;
         background-color: aqua;
         position: fixed;
         display: none; }

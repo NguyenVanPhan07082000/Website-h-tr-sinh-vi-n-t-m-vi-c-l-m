@@ -16,7 +16,7 @@
                 class="header__text-box2__find_name header__text-box2__find_text" />
             <input type="text" name="diadiem" id="find_type" placeholder="Nhập địa điểm..."
                 class="header__text-box2__find_type header__text-box2__find_text" />
-            <input type="submit" name="submit" class="btn-login btn-white btn-animated" value="Search Now">
+            <input type="submit" name="submit" class="btn-login btn-new-all" value="Search Now">
         </form>
         {{-- <div class="header__logo-box">
         <img src="{{asset('public/fontend/img/logo.png')}}" class="header__logo-box__logo" alt="logo"/>
@@ -34,9 +34,9 @@
         <a href="./project/login/login.html" class="btn-login btn-white">Đăng nhập</a>
     </div> --}}
         <!-- <div class="header__login">
-                <a href="#" class="btn-login btn-white">Đăng Ký</a>
-                <a href="./project/login/login.html" class="btn-login btn-white">Đăng nhập</a>
-            </div> -->
+                                                                                <a href="#" class="btn-login btn-white">Đăng Ký</a>
+                                                                                <a href="./project/login/login.html" class="btn-login btn-white">Đăng nhập</a>
+                                                                            </div> -->
     </header>
 @endsection
 @section('css')
@@ -226,8 +226,7 @@
                         </div>
                         <div class="card_side card_side--back">
                             <a href="{{ URL::to('/profile_td' . '/' . $cp->idCompany) }}" class="info-job_a--card"> Xem
-                                Thông
-                                Tin </a>
+                                Thông Tin </a>
                             <div class="card_side--info">
                                 <p class="card_side--info_title">{{ $cp->Tencongty }}</p>
                                 <p>{{ $cp->Diachi }}</p>
@@ -245,9 +244,10 @@
             <p class="email_background--content_title">
                 Đăng Ký Theo Dõi Để Nhận Cập Nhật Về Cơ Hội Việc Làm Mới Và Phù Hợp Nhất
             </p>
-            <form>
+            <form action="{{ URL::to('/dang-ky-email') }}" method="post" enctype="multipart/form-data">
+                {{ csrf_field() }}
                 <input type="email" class="email_background--content_insert email_background--content_insert--inp"
-                    name="email" id="email" placeholder="Nhập email của bạn..." />
+                    name="txtemail" id="email" placeholder="Nhập email của bạn..." />
                 <input type="submit" class="email_background--content_insert email_background--content_insert--btn"
                     name="btnEmail" id="btnEmail" value="Đăng Ký" />
             </form>

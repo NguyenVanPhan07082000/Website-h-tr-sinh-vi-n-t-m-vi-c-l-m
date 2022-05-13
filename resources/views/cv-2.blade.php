@@ -1,226 +1,153 @@
 @extends('welcome')
 @section('css')
-    <link rel="stylesheet" href="{{asset('public/fontend/css/cv-2.css')}}"/>
-    <link rel="stylesheet" type="text/css" href="{{asset('public/fontend/css/job.css')}}"/>
+    <link rel="stylesheet" href="{{ asset('public/fontend/css/cv-2.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ asset('public/fontend/css/job.css') }}" />
 @endsection
 @section('content')
-<img src="{{asset('public/fontend/img/chamngon.jpg')}}" class="img_chamngon" alt="chamngon"/>
-<p style="color: black;font-family: cursive; font-size: 50px; font-weight: bold; text-align: center; background-color: aqua; margin-top: -10px">CV CỦA TÔI</p>
-<div class="wrapper">
-    <div class="intro">
-      <div class="profile">
-        <div class="photo">
-          <img src="https://i.imgur.com/zh9eNsh.jpg">
-        </div>
-        <div class="bio">
-          <h1 class="name">Chih-Hsiang Chen</h1>
-          <p class="profession">Front-end Developer</p>
-        </div>
-      </div>
-      <div class="intro-section about">
-        <h1 class="title">about me</h1>
-        <p class="paragraph">
-          Hi everyone, I am a web front-end developer, graduated from NTHU, Taiwan and my major is CS. I recently try my
-          best to improve my skills on web front-end. My favorite thing is to observe others' portfolio.
-        </p>
-      </div>
-      <div class="intro-section contact">
-        <h1 class="title">Contact</h1>
-        <div class="info-section">
-          <i class="fas fa-phone"></i>
-          <span>(+886)888-888-888</span>
-        </div>
-        <div class="info-section">
-          <i class="fas fa-map-marker-alt"></i>
-          <span>Kaoshiung, Taiwan</span>
-        </div>
-        <div class="info-section">
-          <i class="fas fa-paper-plane"></i>
-          <span>chih.hsi.chen@gmail.com</span>
-        </div>
-        <div class="info-section link">
-          <i class="fab fa-facebook"></i>
-          <a target="_blank" rel="author" href="https://www.facebook.com/profile.php?id=100006277752355">
-            <span>陳志祥</span>
-          </a>
-        </div>
-      </div>
-      <div class="intro-section follow">
-        <h1 class="title">Follow</h1>
-        <div class="info-section link">
-          <i class="fab fa-github"></i>
-          <a target="_blank" rel="author" href="https://github.com/chih-hsi-chen">
-            <span>chih-hsi-chen@github</span>
-          </a>
-        </div>
-        <div class="info-section link">
-          <i class="fab fa-codepen"></i>
-          <a target="_blank" rel="author" href="https://codepen.io/chih-hsi-chen">
-            <span>codepen.io</span>
-          </a>
-        </div>
-        <div class="info-section link">
-          <i class="fab fa-medium"></i>
-          <a target="_blank" rel="author" href="https://medium.com/狗奴工程師">
-            <span>狗奴工程師</span>
-          </a>
-        </div>
-      </div>
-    </div>
+    @foreach ($myCV as $key => $cv)
+        <img src="{{ asset('public/fontend/img/chamngon.jpg') }}" class="img_chamngon" alt="chamngon" />
+        <p
+            style="color: black;font-family: cursive; font-size: 50px; font-weight: bold; text-align: center; background-color: aqua; margin-top: -10px">
+            CV CỦA {{ $cv->Hoten }}</p>
+        <div class="wrapper">
+            <div class="intro">
+                <div class="profile">
+                    <div class="photo">
+                        <img src="{{ asset('public/fontend/img/cv' . '/' . $cv->Hinhanh) }}">
+                    </div>
+                    <div class="bio">
+                        <h1 class="name">{{ $cv->Hoten }}</h1>
+                        <p class="profession">{{ $cv->Nganhnghe }}</p>
+                    </div>
+                </div>
+                <div class="intro-section about">
+                    <h1 class="title">MỤC TIÊU</h1>
+                    <p class="paragraph">
+                        {{ $cv->Muctieu }}
+                    </p>
+                </div>
+                <div class="intro-section contact">
+                    <h1 class="title">THÔNG TIN LIÊN LẠC</h1>
+                    <div class="info-section">
+                        <i class="fas fa-birthday-cake"></i>
+                        <span>{{ $cv->Ngaysinh }}</span>
+                    </div>
+                    <div class="info-section">
+                        <i class="fas fa-transgender"></i>
+                        <span>{{ $cv->Gioitinh }}</span>
+                    </div>
+                    <div class="info-section">
+                        <i class="fas fa-phone"></i>
+                        <span>{{ $cv->SDT }}</span>
+                    </div>
+                    <div class="info-section">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>{{ $cv->Diachi }}</span>
+                    </div>
+                    <div class="info-section">
+                        <i class="fas fa-paper-plane"></i>
+                        <span>{{ $cv->Email }}</span>
+                    </div>
+                    <div class="info-section link">
+                        <i class="fab fa-facebook"></i>
+                        <a target="_blank" rel="author" href="{{ URL::to($cv->LinkTKMXH) }}">
+                            <span>{{ $cv->TKMXH }}</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+    @endforeach
     <div class="detail">
-      <div class="detail-section edu">
-        <div class="detail-title">
-          <div class="title-icon">
-            <i class="fas fa-user-graduate"></i>
-          </div>
-          <span>Eduation</span>
+        <div class="detail-section edu">
+            <div class="detail-title intro-section">
+                <div class="title-icon">
+                    <i class="fas fa-user-graduate"></i>
+                </div>
+                <span class="title">TRÌNH ĐỘ HỌC VẤN</span>
+            </div>
+            <div class="detail-content">
+                @foreach ($education as $key => $edu)
+                    <div class="timeline-block">
+                        <h1>{{ $edu->tenTruong }}</h1>
+                        <time>{{ $edu->ngayBatDau }} - {{ $edu->ngayKetthuc }}/ Xếp loại: {{ $edu->xepLoai }}/
+                            ĐTB:{{ $edu->diemTB }}</time>
+                        <p>{{ $edu->moTa }}</p>
+
+                    </div>
+                @endforeach
+            </div>
         </div>
-        <div class="detail-content">
-          <div class="timeline-block">
-            <h1>Department of Computer Science</h1>
-            <p>National Tsing Hua University, Taiwan</p>
-            <time>2015 - 2019</time>
-          </div>
-          <div class="timeline-block">
-            <h1>Institute of Computer Science and Engineering</h1>
-            <p>National Chiao Tung University, Taiwan</p>
-            <time>2020 - present</time>
-          </div>
+        <div class="detail-section edu">
+            <div class="detail-title intro-section">
+                <div class="title-icon">
+                    <i class="fas fa-user-graduate"></i>
+                </div>
+                <span class="title">KINH NGHIỆM LÀM VIỆC</span>
+            </div>
+            <div class="detail-content">
+                @foreach ($kinhNghiem as $key => $kn)
+                    <div class="timeline-block">
+                        <h1>{{ $kn->tenCTY }}</h1>
+                        <time>{{ $kn->tuNgay }} - {{ $kn->denNgay }}</time>
+                        <p>{{ $kn->moTa }}</p>
+
+                    </div>
+                @endforeach
+            </div>
         </div>
-      </div>
-      <div class="detail-section pg-skill">
-        <div class="detail-title">
-          <div class="title-icon">
-            <i class="fas fa-laptop-code"></i>
-          </div>
-          <span>Programming skills</span>
+        <div class="detail-section pg-skill">
+            <div class="detail-title intro-section">
+                <div class="title-icon">
+                    <i class="fas fa-laptop-code"></i>
+                </div>
+                <span class="title">KỸ NĂNG</span>
+            </div>
+            <div class="detail-content">
+                <ul class="pg-list">
+                    @foreach ($kyNang as $key => $skill)
+                        <li>
+                            <span>{{ $skill->tenKyNang }}</span>
+                            <div class="sb-skeleton">
+                                <div class="skillbar" style="--pgbar-length: <?php echo $skill->mucDo; ?>%"></div>
+                            </div>
+                        </li>
+                    @endforeach
+                </ul>
+            </div>
         </div>
-        <div class="detail-content">
-          <ul class="pg-list">
-            <li>
-              <span>HTML5</span>
-              <div class="sb-skeleton">
-                <div class="skillbar" style="--pgbar-length: 90%"></div>
-              </div>
-            </li>
-            <li>
-              <span>CSS3</span>
-              <div class="sb-skeleton">
-                <div class="skillbar" style="--pgbar-length: 75%"></div>
-              </div>
-            </li>
-            <li>
-              <span>Javascript</span>
-              <div class="sb-skeleton">
-                <div class="skillbar" style="--pgbar-length: 70%"></div>
-              </div>
-            </li>
-            <li>
-              <span>JQuery</span>
-              <div class="sb-skeleton">
-                <div class="skillbar" style="--pgbar-length: 50%"></div>
-              </div>
-            </li>
-            <li>
-              <span>NodeJS</span>
-              <div class="sb-skeleton">
-                <div class="skillbar" style="--pgbar-length: 70%"></div>
-              </div>
-            </li>
-            <li>
-              <span>ReactJS</span>
-              <div class="sb-skeleton">
-                <div class="skillbar" style="--pgbar-length: 75%"></div>
-              </div>
-            </li>
-            <li>
-              <span>VueJS</span>
-              <div class="sb-skeleton">
-                <div class="skillbar" style="--pgbar-length: 40%"></div>
-              </div>
-            </li>
-          </ul>
+        <?php if ($hoatDong) {
+            echo '<div class="section-wrapper clearfix intro-section"><div class="title-icon"><i class="fab fa-galactic-republic"></i></div><span class="title">Hoạt động</span>';
+            foreach ($hoatDong as $key => $hd) {
+                echo '<p>' . $hd->hoatDong . '</p>';
+            }
+            echo '</div>';
+        } ?>
+        <?php if ($thanhTich) {
+            echo '<div class="section-wrapper clearfix intro-section"><div class="title-icon"><i class="fas fa-award"></i></div><span class="title">THÀNH TÍCH</span>';
+            foreach ($thanhTich as $key => $tt) {
+                echo '<p>' . $tt->thanhTich . '</p>';
+            }
+            echo '</div>';
+        } ?>
+        <div class="detail-section interests">
+            <div class="detail-title intro-section">
+                <div class="title-icon">
+                    <i class="fas fa-heart"></i>
+                </div>
+                <span class="title">Sở thích</span>
+            </div>
+            <div class="detail-content">
+                <div class="outer-frame">
+                    <ul class="favor-list">
+                        @foreach ($soThich as $key => $like)
+                            <li>
+                                <span>{{ $like->tenSoThich }}</span>
+                            </li>
+                        @endforeach
+                    </ul>
+                </div>
+            </div>
         </div>
-      </div>
-      <div class="detail-section tool-skill">
-        <div class="detail-title">
-          <div class="title-icon">
-            <i class="fas fa-tools"></i>
-          </div>
-          <span>Developement Tools</span>
-        </div>
-        <div class="detail-content">
-          <ul class="tool-list">
-            <li>
-              <svg viewbox="0 0 100 100">
-                <circle cx="50" cy="50" r="45"></circle>
-                <circle class="cbar" cx="50" cy="50" r="45" style="--percent: 0.6"></circle>
-              </svg>
-              <span class="tl-name">Photoshop</span>
-              <span class="tl-exp">60%</span>
-            </li>
-            <li>
-              <svg viewbox="0 0 100 100">
-                <circle cx="50" cy="50" r="45"></circle>
-                <circle class="cbar" cx="50" cy="50" r="45" style="--percent: 0.8"></circle>
-              </svg>
-              <span class="tl-name">Sublime</span>
-              <span class="tl-exp">80%</span>
-            </li>
-            <li>
-              <svg viewbox="0 0 100 100">
-                <circle cx="50" cy="50" r="45"></circle>
-                <circle class="cbar" cx="50" cy="50" r="45" style="--percent: 0.7"></circle>
-              </svg>
-              <span class="tl-name">Git</span>
-              <span class="tl-exp">70%</span>
-            </li>
-            <li>
-              <svg viewbox="0 0 100 100">
-                <circle cx="50" cy="50" r="45"></circle>
-                <circle class="cbar" cx="50" cy="50" r="45" style="--percent: 0.74"></circle>
-              </svg>
-              <span class="tl-name">NPM</span>
-              <span class="tl-exp">74%</span>
-            </li>
-          </ul>
-        </div>
-  
-      </div>
-      <div class="detail-section interests">
-        <div class="detail-title">
-          <div class="title-icon">
-            <i class="fas fa-heart"></i>
-          </div>
-          <span>Interests</span>
-        </div>
-        <div class="detail-content">
-          <div class="outer-frame">
-            <ul class="favor-list">
-              <li>
-                <i class="fas fa-gamepad"></i>
-                <span>Game</span>
-              </li>
-              <li>
-                <i class="fas fa-paw"></i>
-                <span>Pet</span>
-              </li>
-              <li>
-                <i class="far fa-headphones-alt"></i>
-                <span>Music</span>
-              </li>
-              <li>
-                <i class="fas fa-book-spells"></i>
-                <span>Self-learning</span>
-              </li>
-              <li>
-                <i class="fas fa-user-edit"></i>
-                <span>Blog</span>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
     </div>
-  </div>
+    </div>
 @endsection

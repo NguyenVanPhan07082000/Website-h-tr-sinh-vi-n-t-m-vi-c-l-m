@@ -14,7 +14,7 @@
     <link href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.css" rel="stylesheet"
         type='text/css'>
     <link rel="stylesheet" href="{{ asset('public/fontend/css/main.css') }}" />
-    <script type="text/javascript" src="{{ asset('public/fontend/js/jquery-1.9.1.min.js') }}"> </script>
+    <script type="text/javascript" src="{{ asset('public/fontend/js/jquery-1.9.1.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('public/fontend/js/Slider.js') }}"></script>
     <script type="text/javascript" src="{{ asset('public/fontend/js/jquery.js') }}"></script>
     <script type="text/javascript" src="{{ asset('public/fontend/js/cv-1.js') }}"></script>
@@ -36,7 +36,8 @@
                 class="menu__logo" alt="logo_top"></a>
         <nav>
             <ul class="menu__main">
-                <li class="menu__main--content"><a href="" class="menu__main--content__link">Tìm việc làm</a>
+                <li class="menu__main--content"><a href="{{ URL::to('/tat-ca-viec-lam') }}"
+                        class="menu__main--content__link">Việc làm</a>
                     <ul class="menu__main--content_ul">
                         <li class="menu__main--content_li"><a href="{{ URL::to('/tat-ca-viec-lam') }}"
                                 class="menu__main--content_li--a">Tất Cả Việc Làm</a></li>
@@ -45,23 +46,20 @@
 
                     </ul>
                 </li>
-                <li class="menu__main--content"><a href="" class="menu__main--content__link">My CV</a>
-                    <ul class="menu__main--content_ul">
-                        <li class="menu__main--content_li"><a href="{{ URL::to('/tat-ca-viec-lam') }}"
-                                class="menu__main--content_li--a">Tạo CV</a></li>
-                        <li class="menu__main--content_li"><a href="{{ URL::to('/viec-lam-moi-nhat') }}"
-                                class="menu__main--content_li--a">CV Của Tôi</a></li>
-
-                    </ul>
+                <li class="menu__main--content"><a href="{{ URL::to('/add-info-uv') }}"
+                        class="menu__main--content__link">Tạo CV</a>
                 </li>
-                <li class="menu__main--content"><a href="" class="menu__main--content__link">Dành Cho Nhà Tuyển Dụng</a>
-                    <ul class="menu__main--content_ul">
-                        <li class="menu__main--content_li"><a href="{{ URL::to('/dang-tuyen') }}"
-                                class="menu__main--content_li--a">Đăng Tuyển Dụng</a></li>
-                        <li class="menu__main--content_li"><a href="{{ URL::to('/tim-ung-vien') }}"
-                                class="menu__main--content_li--a">Tìm Ứng Viên</a></li>
-                    </ul>
-                </li>
+                @if (session()->get('td') == 1)
+                    <li class="menu__main--content"><a href="{{ URL::to('/tim-ung-vien') }}"
+                            class="menu__main--content__link">Dành Cho Nhà Tuyển Dụng</a>
+                        <ul class="menu__main--content_ul">
+                            <li class="menu__main--content_li"><a href="{{ URL::to('/dang-tuyen') }}"
+                                    class="menu__main--content_li--a">Đăng Tuyển Dụng</a></li>
+                            <li class="menu__main--content_li"><a href="{{ URL::to('/tim-ung-vien') }}"
+                                    class="menu__main--content_li--a">Tìm Ứng Viên</a></li>
+                        </ul>
+                    </li>
+                @endif
                 @if (session()->get('name'))
                     <li class="menu__main--content">
                         <p class="user" style="font-weight: bold">
@@ -72,7 +70,8 @@
                             {{ session()->get('name') }}
                         </p>
                         <ul class="menu__main--content_ul">
-                            <li class="menu__main--content_li"><a href="{{ URL::to('/profile') }}"
+                            <li class="menu__main--content_li"><a
+                                    href="{{ URL::to('/my-cv/' . session()->get('id')) }}"
                                     class="menu__main--content_li--a">Profile</a></li>
                             <li class="menu__main--content_li"><a href="{{ URL::to('/logout') }}"
                                     class="menu__main--content_li--a">Đăng Xuất</a></li>

@@ -71,14 +71,14 @@ body {
 	border-radius: 50%;
 }
 .bio .name {
-	font-size: 1.5rem;
+	font-size: 4rem;
 	text-align: center;
 	color: var(--color-gray-light-1);
 	margin: 0;
 	margin-top: 1rem;
 }
 .bio .profession {
-	font-size: 1rem;
+	font-size: 2rem;
 	text-align: center;
 	color: var(--color-gray-light-1);
 	margin: 0;
@@ -89,7 +89,7 @@ body {
 	color: var(--color-gray-dark-1);
 }
 .intro-section .title {
-	font-size: 1rem;
+	font-size: 2rem;
 	font-weight: bold;
 	text-transform: uppercase;
 	letter-spacing: 1px;
@@ -202,16 +202,16 @@ body {
 	margin-bottom: 1rem;	
 }
 .timeline-block h1 {
-	font-size: 1rem;
+	font-size: 2rem;
 	margin: 5px 0;
 	transition: all 0.3s;
 }
 .timeline-block p {
-	font-size: 0.8rem;
+	font-size: 1.6rem;
 	margin: 5px 0;
 }
 .timeline-block time {
-	font-size: 0.8rem;
+	font-size: 1.8rem;
 	color: var(--color-gray-dark-2);
 }
 .timeline-block::before {

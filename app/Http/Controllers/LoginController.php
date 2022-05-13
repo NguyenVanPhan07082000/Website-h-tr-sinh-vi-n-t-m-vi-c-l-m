@@ -7,7 +7,6 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\URL;
-use SebastianBergmann\Environment\Console;
 
 session_start();
 class LoginController extends Controller
@@ -19,7 +18,7 @@ class LoginController extends Controller
     public function login(Request $request)
     {
         $user = $request->loginUser;
-        $pass = $request->loginPwd;
+        $pass = md5($request->loginPwd);
         // $result = DB::table('user') -> where('Taikhoan',$user)->where('Matkhau',$pass)->first();
         $users = DB::select('select * from user where Taikhoan = ? and Matkhau = ?', [$user, $pass]);
         if (!$users) {
@@ -47,6 +46,7 @@ class LoginController extends Controller
                 $iduser = $user->idUser;
                 $userName = $user->Name;
                 $img = $user->Hinhanh;
+                $td = $user->Tuyendung;
             }
             // $names = DB::select('select * from infomation where idUser = ?', [$iduser]);
             // foreach ($names as $name) {
@@ -56,6 +56,7 @@ class LoginController extends Controller
             session()->put('name', $userName);
             session()->put('img', $img);
             session()->put('id', $iduser);
+            session()->put('td', $td);
             // session()->flash('fail', $userName);
             return redirect('/trang-chu');
         }
@@ -75,10 +76,6 @@ class LoginController extends Controller
     {
         return view('infomation');
     }
-    public function add_info_sv()
-    {
-        return view('add_info_uv');
-    }
     public function add_user()
     {
         return view('create_account');
@@ -91,7 +88,7 @@ class LoginController extends Controller
             $data = array();
             $id = session()->get('id');
             // $data['Taikhoan'] = $request->txtUser;
-            $data['Matkhau'] = $request->txtPass;
+            $data['Matkhau'] = md5($request->txtPass);
             DB::table('user')->where('idUser', '=', $id)->update(['Matkhau' => $pass]);
             session()->put('messenger', 'Đổi mật khẩu thành công');
             return redirect('/doi-mat-khau');
@@ -104,7 +101,7 @@ class LoginController extends Controller
     {
         $data = array();
         $data['Taikhoan'] = $request->txtUser;
-        $data['Matkhau'] = $request->txtPass;
+        $data['Matkhau'] = md5($request->txtPass);
         $data['Name'] = $request->txtName;
         // $data['Hinhanh'] = $request->hinhanh;
         $data['Tuyendung'] = $request->permission;
@@ -162,44 +159,13 @@ class LoginController extends Controller
     }
     public function ung_vien()
     {
-        return view('add_info_uv');
+        if (session()->get('id'))
+            return view('add_info_uv');
+        return redirect('/login');
     }
     public function tuyen_dung()
     {
         return view('add_info_td');
-    }
-    public function save_ung_vien(Request $request)
-    {
-        $data = array();
-        $data['idUser'] = session()->get('id');
-        $data['Hoten'] = $request->txtUser;
-        $data['SDT'] = $request->txtSDT;
-        $data['Diachi'] = $request->txtDiachi;
-        $data['Ngaysinh'] = $request->txtNgaysinh;
-        $data['Gioitinh'] = $request->txtGioitinh;
-        // $data['Hinhanh'] = $request->hinhanh;
-        $data['Gioithieu'] = $request->txtGioithieu;
-        $data['Chuyennganh'] = $request->txtChuyenganh;
-        // $data['Email'] = $request->txtEmail;
-        $data['Trinhdo'] = $request->txtTrinhdo;
-
-        $get_img = $request->file('hinhanh');
-        if ($get_img) {
-            $ext = $request->hinhanh->extension();
-            if ($ext == 'png' || $ext == 'jpg' || $ext == 'jpeg' || $ext == 'gif') {
-                $get_name_img = $get_img->getClientOriginalName();
-                $name_img = current(explode('.', $get_name_img));
-                $new_img = $name_img . rand(0, 99) . '.' . $get_img->getClientOriginalExtension();
-                $get_img->move('fontend/img/avatar', $new_img);
-                $data['Hinhanh'] = $new_img;
-                DB::table('infomation')->insert($data);
-                Session()->put('messenger', 'Thêm thành công');
-                return redirect('/trang-chu');
-            } else {
-                Session()->put('messenger', 'File không phải file ảnh');
-                return redirect('/trang-chu');
-            }
-        }
     }
     public function save_tuyen_dung(Request $request)
     {

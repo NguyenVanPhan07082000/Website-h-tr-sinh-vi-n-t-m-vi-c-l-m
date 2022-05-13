@@ -6,38 +6,45 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use PhpParser\Node\Expr\FuncCall;
 use Illuminate\Contracts\Session\Session;
+
 session_start();
 class HomeController extends Controller
 {
-    public function index(){
+    public function index()
+    {
         $id = session()->get('id');
-        $jobnoibac = DB::select('SELECT * FROM job,company WHERE job.idCompany = company.idCompany ORDER BY Luottheodoi DESC LIMIT ?',[6]);
-        $jobvip = DB::select('SELECT * FROM job,company WHERE job.idCompany = company.idCompany ORDER BY Soluonghoso DESC LIMIT ?',[6]);
-        $jobsave = DB::select('SELECT job.idJob,Tencongty,cp.Hinhanh,Nganhnghe,Luong,Quyenloi FROM company AS cp,favourite_job AS fj,job WHERE cp.idCompany = job.idCompany AND fj.idJob = job.idJob AND idUser = ? AND fj.Trangthai = ? LIMIT ?', [$id,0,6]);
-        $jobjoin = DB::select('SELECT job.idJob,Tencongty,cp.Hinhanh,Nganhnghe,Luong,Quyenloi FROM company AS cp,favourite_job AS fj,job WHERE cp.idCompany = job.idCompany AND fj.idJob = job.idJob AND idUser = ? AND fj.Trangthai = ? LIMIT ?', [$id,1,6]);
+        $jobnoibac = DB::select('SELECT * FROM job,company WHERE job.idCompany = company.idCompany ORDER BY Luottheodoi DESC LIMIT ?', [6]);
+        $jobvip = DB::select('SELECT * FROM job,company WHERE job.idCompany = company.idCompany ORDER BY Soluonghoso DESC LIMIT ?', [6]);
+        $jobsave = DB::select('SELECT job.idJob,Tencongty,cp.Hinhanh,Nganhnghe,Luong,Quyenloi FROM company AS cp,favourite_job AS fj,job WHERE cp.idCompany = job.idCompany AND fj.idJob = job.idJob AND idUser = ? AND fj.Trangthai = ? LIMIT ?', [$id, 0, 6]);
+        $jobjoin = DB::select('SELECT job.idJob,Tencongty,cp.Hinhanh,Nganhnghe,Luong,Quyenloi FROM company AS cp,favourite_job AS fj,job WHERE cp.idCompany = job.idCompany AND fj.idJob = job.idJob AND idUser = ? AND fj.Trangthai = ? LIMIT ?', [$id, 1, 6]);
         $company = DB::select('select * from company limit ?', [6]);
         $camnan = DB::table('camnan')->get();
         // dd($jobsave);
-        return view('page.home')->with('jobnoibac',$jobnoibac)->with('jobvip',$jobvip)->with('jobsave',$jobsave)->with('jobjoin',$jobjoin)->with('company',$company)->with('camnan',$camnan);
+        return view('page.home')->with('jobnoibac', $jobnoibac)->with('jobvip', $jobvip)->with('jobsave', $jobsave)->with('jobjoin', $jobjoin)->with('company', $company)->with('camnan', $camnan);
     }
-    public function new_job(){
+    public function new_job()
+    {
         $newjob = DB::select('SELECT * FROM job,company WHERE job.idCompany = company.idCompany ORDER BY Ngaycapnhat DESC');
-        $jobnoibac = DB::select('SELECT * FROM job,company WHERE job.idCompany = company.idCompany and Luottheodoi > ? ORDER BY Luottheodoi DESC Limit ?',[0,20]);
-        return view('page.new_job')->with('newjob', $newjob) ->with('jobnoibac', $jobnoibac);
+        $count = DB::select('SELECT count(*) as tong FROM job,company WHERE job.idCompany = company.idCompany ORDER BY Ngaycapnhat DESC');
+        $jobnoibac = DB::select('SELECT * FROM job,company WHERE job.idCompany = company.idCompany and Luottheodoi > ? ORDER BY Luottheodoi DESC Limit ?', [0, 20]);
+        return view('page.new_job')->with('newjob', $newjob)->with('jobnoibac', $jobnoibac)->with('count', $count);
     }
-    public function all_job(){
+    public function all_job()
+    {
         $newjob = DB::select('SELECT * FROM job,company WHERE job.idCompany = company.idCompany');
-        $jobnoibac = DB::select('SELECT * FROM job,company WHERE job.idCompany = company.idCompany and Luottheodoi > ? ORDER BY Luottheodoi DESC Limit ?',[0,20]);
-        return view('page.all_job')->with('newjob', $newjob) ->with('jobnoibac', $jobnoibac);
+        $countalljob = DB::select('SELECT count(*) as tongso FROM job,company WHERE job.idCompany = company.idCompany');
+        $jobnoibac = DB::select('SELECT * FROM job,company WHERE job.idCompany = company.idCompany and Luottheodoi > ? ORDER BY Luottheodoi DESC Limit ?', [0, 20]);
+        return view('page.all_job')->with('newjob', $newjob)->with('jobnoibac', $jobnoibac)->with('countalljob', $countalljob);
     }
     public function timungvien()
     {
-        $timuv = DB::select('select * from user AS us,infomation AS info where us.idUser = info.idUser and Tuyendung = ?',[0]);
-        return view('page.ds_ungvien')->with('timuv',$timuv);
+        $timuv = DB::select('select * from cv');
+        $tongso = DB::select('select count(*) as tongso from cv');
+        return view('page.ds_ungvien')->with('timuv', $timuv)->with('tongso', $tongso);
     }
-    public function dang_tuyen(){
-        if(session()->get('id')== null)
-        {
+    public function dang_tuyen()
+    {
+        if (session()->get('id') == null) {
             session()->put('messenger', 'Vui lòng đăng nhập');
             return redirect('/login');
         }
@@ -63,7 +70,7 @@ class HomeController extends Controller
         $data['Luottheodoi'] = '0';
         $data['Soluonghoso'] = '0';
         DB::table('job')->insert($data);
-        session()->put('messenger','Bạn đã đăng tuyển thành công');
+        session()->put('messenger', 'Bạn đã đăng tuyển thành công');
         return redirect('./trang-chu');
     }
     // public function tim_kiem(Request $request)
@@ -78,93 +85,102 @@ class HomeController extends Controller
     //     // dd($jobsave);
     //     return view('page.search')->with('jobnoibac',$jobnoibac)->with('jobvip',$jobvip)->with('jobsave',$jobsave)->with('jobjoin',$jobjoin)->with('company',$company)->with('camnan',$camnan);
     // }
-    public function tim_kiem(Request $request){
+    public function tim_kiem(Request $request)
+    {
         $chucvu = $request->chucvu;
         $dd = $request->diadiem;
-        if($chucvu=="")
-        {
-            if($dd == "")
-            {
-                session()->put('messenger','Vui lòng nhập chức vụ hoặc địa điểm');
+        if ($chucvu == "") {
+            if ($dd == "") {
+                session()->put('messenger', 'Vui lòng nhập chức vụ hoặc địa điểm');
                 return redirect('/trang-chu');
-            }
-            else{
-                $db = DB::table('job')->join('company','company.idCompany','=','job.idCompany')->where('Diachi','like','%'.$dd.'%')->get();
-                if($db==null || $db == "" || $db == []|| $db ==false)
-                {
-                    session()->put('messenger','Không có kết quả tìm kiếm phù hợp');
+            } else {
+                $db = DB::table('job')->join('company', 'company.idCompany', '=', 'job.idCompany')->where('Diachi', 'like', '%' . $dd . '%')->get();
+                if ($db == null || $db == "" || $db == [] || $db == false) {
+                    session()->put('messenger', 'Không có kết quả tìm kiếm phù hợp');
                     return redirect('/trang-chu');
-                }
-                else{
-                    return view('ketquatimkiem')->with('search',$db);
+                } else {
+                    return view('ketquatimkiem')->with('search', $db);
                 }
                 // dd($db);
             }
-
-        }
-        elseif($dd == ""){
-            if($chucvu=="")
-            {
-                session()->put('messenger','Vui lòng nhập chức vụ hoặc địa điểm');
+        } elseif ($dd == "") {
+            if ($chucvu == "") {
+                session()->put('messenger', 'Vui lòng nhập chức vụ hoặc địa điểm');
+                return redirect('/trang-chu');
+            } else {
+                $db = DB::table('job')->join('company', 'company.idCompany', '=', 'job.idCompany')->where('Nganhnghe', 'like', '%' . $chucvu . '%')->get();
+                // dd($db);
+                if ($db == null || $db == "") {
+                    session()->put('messenger', 'Không có kết quả tìm kiếm phù hợp');
+                    return redirect('/trang-chu');
+                }
+                return view('ketquatimkiem')->with('search', $db);
+            }
+        } else {
+            $db = DB::table('job')->join('company', 'company.idCompany', '=', 'job.idCompany')->where('Diachi', 'like', '%' . $dd . '%')->where('Nganhnghe', 'like', '%' . $chucvu . '%')->get();
+            if ($db == null || $db == "") {
+                session()->put('messenger', 'Không có kết quả tìm kiếm phù hợp');
                 return redirect('/trang-chu');
             }
-            else{
-                $db = DB::table('job')->join('company','company.idCompany','=','job.idCompany')->where('Nganhnghe','like','%'.$chucvu.'%')->get();
-                // dd($db);
-                if($db==null || $db == "")
-                {
-                    session()->put('messenger','Không có kết quả tìm kiếm phù hợp');
-                    return redirect('/trang-chu');
-                }
-                return view('ketquatimkiem')->with('search',$db);
-            }
-        }
-        else{
-            $db = DB::table('job')->join('company','company.idCompany','=','job.idCompany')->where('Diachi','like','%'.$dd.'%')->where('Nganhnghe','like','%'.$chucvu.'%')->get();
-            if($db==null || $db == "")
-                {
-                    session()->put('messenger','Không có kết quả tìm kiếm phù hợp');
-                    return redirect('/trang-chu');
-                }
-            return view('ketquatimkiem')->with('search',$db);
+            return view('ketquatimkiem')->with('search', $db);
         }
     }
-    public function info_job($idJob){
-        $info_job = DB::table('Job')->join('company','job.idCompany','=','company.idCompany')->where('idJob','=',$idJob)->get();
-        return view('info_job')->with('info_job',$info_job);
+    public function info_job($idJob)
+    {
+        $info_job = DB::table('Job')->join('company', 'job.idCompany', '=', 'company.idCompany')->where('idJob', '=', $idJob)->get();
+        return view('info_job')->with('info_job', $info_job);
     }
-    public function like_job($idJob){
+    public function like_job($idJob)
+    {
         $id = session()->get('id');
         $data = array();
         $data['idUser'] = $id;
         $data['idJob'] = $idJob;
         $data['Trangthai'] = '0';
-        if($id == null)
-        {
+        if ($id == null) {
             session()->put('messenger', 'Vui lòng đăng nhập trước');
             return redirect('/login');
-        }
-        else{
+        } else {
             DB::table('favourite_job')->insert($data);
             session()->put('messenger', 'Bạn đã yêu thích job');
             return redirect('/trang-chu');
         }
     }
-    public function join_job($idJob){
+    public function join_job($idJob)
+    {
         $id = session()->get('id');
         $data = array();
         $data['idUser'] = $id;
         $data['idJob'] = $idJob;
         $data['Trangthai'] = '1';
-        if($id == null)
-        {
+        if ($id == null) {
             session()->put('messenger', 'Vui lòng đăng nhập trước');
             return redirect('/login');
-        }
-        else{
+        } else {
             DB::table('favourite_job')->insert($data);
             session()->put('messenger', 'Bạn đã nộp đơn thành công');
             return redirect('/trang-chu');
+        }
+    }
+    public function dang_ky_email(Request $request)
+    {
+        $id = session()->get('id');
+        $data = array();
+        $data['idUser'] = $id;
+        $data['email'] = $request->txtemail;
+        if (!$id) {
+            session()->put('messenger', 'Vui lòng đăng nhập trước');
+            return redirect('/login');
+        } else {
+            $email = DB::select("select * from email where idUser=?", [$id]);
+            if (!$email) {
+                DB::table('email')->insert($data);
+                session()->put('messenger', 'Bạn đã nộp đơn thành công');
+                return redirect('/trang-chu');
+            } else {
+                session()->put('messenger', 'Bạn đăng ký email trước đó rồi nha!');
+                return redirect('/trang-chu');
+            }
         }
     }
 }

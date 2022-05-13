@@ -1,230 +1,115 @@
 @extends('welcome')
 @section('css')
-<link rel="stylesheet" href="{{asset('public/fontend/css/cv-5.css')}}"/>
-<link rel="stylesheet" type="text/css" href="{{asset('public/fontend/css/job.css')}}"/>
+    <link rel="stylesheet" href="{{ asset('public/fontend/css/cv-5.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ asset('public/fontend/css/job.css') }}" />
 @endsection
 @section('content')
-<img src="{{asset('public/fontend/img/chamngon.jpg')}}" class="img_chamngon" alt="chamngon"/>
-<p style="color: black;font-family: cursive; font-size: 50px; font-weight: bold; text-align: center; background-color: aqua; margin-top: -10px">CV CỦA TÔI</p>
+    @foreach ($myCV as $key => $cv)
+        <img src="{{ asset('public/fontend/img/chamngon.jpg') }}" class="img_chamngon" alt="chamngon" />
+        <p
+            style="color: black;font-family: cursive; font-size: 50px; font-weight: bold; text-align: center; background-color: aqua; margin-top: -10px">
+            CV {{ $cv->Hoten }}</p>
 
-<div class="contOut clearfix">
-    <div class="contIn">
-      <div class="section top clearfix">
-        <div class="logoCont"><img class="logo" src="http://gravatar.com/avatar/51efa933e7e70c09b613ff806e36cd85?s=512"/></div>
-        <h1>Jeremy Hawes</h1>
-        <div class="moreInfo">
-          <p>1060 Arcade Boulevard<br/>Sacramento, CA 95815<br/>hawes.jeremy@gmail.com<br/>(916) 216.7788<br/><a href="http://onelittledesigner.com" target="_blank">RapidWeaver Themes &amp; Stacks</a></p>
+        <div class="contOut clearfix">
+            <div class="contIn">
+                <div class="section top clearfix">
+                    <div class="logoCont"><img class="logo"
+                            src="{{ asset('public/fontend/img/cv' . '/' . $cv->Hinhanh) }}" /></div>
+                    <h1>{{ $cv->Hoten }}</h1>
+                    <div class="moreInfo">
+                        <p>{{ $cv->Ngaysinh }}&ensp;<i class="fas fa-birthday-cake"></i><br />{{ $cv->Gioitinh }}&ensp;<i
+                                class="fas fa-transgender"></i><br />{{ $cv->SDT }}&ensp;<i
+                                class="fas fa-phone"></i><br />{{ $cv->Diachi }}&ensp;<i
+                                class="fas fa-map-marker-alt"></i><br />{{ $cv->Email }}&ensp;<i
+                                class="fas fa-paper-plane"></i><br /><a href="{{ URL::to($cv->LinkTKMXH) }}"
+                                target="_blank">{{ $cv->TKMXH }}&ensp;<i class="fab fa-facebook"></i></a></p>
+                    </div>
+                    <p class="tagline">{{ $cv->Nganhnghe }}</p>
+                </div>
+                <div class="divider"></div>
+            </div>
         </div>
-        <p class="tagline">Front-end Developer<br/>Project Manager<br/><span>Web &amp; Software</span></p>
-      </div>
-      <div class="divider"></div>
+        <div class="contOut clearfix">
+            <div class="contIn">
+                <div class="section middle clearfix">
+                    <div class="job">
+                        <h2>MỤC TIÊU<i class="fa fa-minus openBtn open"></i></h2>
+                        <p>{{ $cv->Muctieu }}</p>
+                    </div>
+                </div>
+                <div class="divider"></div>
+            </div>
+        </div>
+    @endforeach
+    <div class="contOut clearfix">
+        <div class="contIn">
+            <div class="section middle clearfix">
+                <div class="job">
+                    <h2>TRÌNH ĐỘ HỌC VẤN<i class="fa fa-plus openBtn"></i></h2>
+                    @foreach ($education as $key => $edu)
+                        <div>
+                            <h3>{{ $edu->tenTruong }}</h3>
+                            <p>{{ $edu->ngayBatDau }} - {{ $edu->ngayKetthuc }}/ Xếp loại: {{ $edu->xepLoai }}/
+                                ĐTB:{{ $edu->diemTB }}<br /><span class="brag">{{ $edu->moTa }}</span></p>
+                        </div>
+                    @endforeach
+                </div>
+            </div>
+            <div class="divider"></div>
+        </div>
     </div>
-  </div>
-  <div class="contOut clearfix">
-    <div class="contIn">
-      <div class="section middle clearfix">
-        <div class="job">
-          <h2>Capitol Tech Solutions<i class="fa fa-minus openBtn open"></i><span>Sept 2015 - present</span></h2>
-          <p><strong>Position:</strong>Project Manager<br/><strong>Description:</strong>I manage the entire process of website design and development for projects varying in scope.<br/><span class="brag">I manage a team consisting of 12 employees and 6-10 highly skilled contractors. We develop website's for our own internal CMS including Shopify and WordPress.</span></p>
+    <div class="contOut clearfix">
+        <div class="contIn">
+            <div class="section middle clearfix">
+                <div class="job">
+                    <h2>KINH NGHIỆM<i class="fa fa-plus openBtn"></i></h2>
+                    @foreach ($kinhNghiem as $key => $kn)
+                        <div>
+                            <h3>{{ $kn->tenCTY }}</h3>
+                            <p>{{ $kn->tuNgay }} - {{ $kn->denNgay }}<br /><span
+                                    class="brag">{{ $kn->moTa }}</span></p>
+                        </div>
+                    @endforeach
+                </div>
+            </div>
+            <div class="divider"></div>
         </div>
-      </div>
-      <div class="divider"></div>
     </div>
-  </div>
-  <div class="contOut clearfix">
-    <div class="contIn">
-      <div class="section middle clearfix">
-        <div class="job">
-          <h2>One Little Designer (1LD)<i class="fa fa-plus openBtn"></i><span>2010 - present</span></h2>
-          <p><strong>Position:</strong>Project Manager & Front-end Developer<br/><strong>Description:</strong>Website & Software development, design, UI and project management<br/><span class="brag">I am one of the top developers in the RapidWeaver market where I have over 70 top selling addons and my latest work is featured as a built-in theme in their latest version (6).</span></p>
+    <?php if ($thanhTich) {
+        echo '<div class="contOut clearfix"><div class="contIn"><div class="section middle clearfix"><div class="job"><h2>THÀNH TÍCH<i class="fa fa-plus openBtn"></i></h2>';
+        foreach ($thanhTich as $key => $tt) {
+            echo '<p><span class="brag">' . $tt->thanhTich . '</span></p>';
+        }
+        echo '</div></div><div class="divider"></div></div></div>';
+    } ?>
+    <?php if ($hoatDong) {
+        echo '<div class="contOut clearfix"><div class="contIn"><div class="section middle clearfix"><div class="job"><h2>HOẠT ĐỘNG<i class="fa fa-plus openBtn"></i></h2>';
+        foreach ($hoatDong as $key => $hd) {
+            echo '<p><span class="brag">' . $hd->hoatDong . '</span></p>';
+        }
+        echo '</div></div><div class="divider"></div></div></div>';
+    } ?>
+    <div class="contOut clearfix half">
+        <div class="contIn">
+            <div class="section middle clearfix">
+                <div class="skills code odd">
+                    <h3 style="color: black">KỸ NĂNG<i class="fa fa-code"></i></h3>
+                    <ul>
+                        @foreach ($kyNang as $key => $skill)
+                            <li class="prim">{{ $skill->tenKyNang }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+                <div class="skills software">
+                    <h3 style="color: black">SỞ THÍCH<i class="fa fa-laptop"></i></h3>
+                    <ul>
+                        @foreach ($soThich as $key => $like)
+                            <li class="prim">{{ $like->tenSoThich }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            </div>
+            <div class="divider"></div>
         </div>
-      </div>
-      <div class="divider"></div>
     </div>
-  </div>
-  <div class="contOut clearfix">
-    <div class="contIn">
-      <div class="section middle clearfix">
-        <div class="job">
-          <h2>Shoulder to Shoulder<i class="fa fa-plus openBtn"></i><span>2007 - 2010</span></h2>
-          <p><strong>Position:</strong>System Administrator<br/><strong>Description:</strong>Maintain internal database, administration, project management, team building<br/><span class="brag">During college I was a full-time volunteer here where our aim was to help "Prepare urban fatherless young men for life" and I helped in building the company from the ground up.</span></p>
-        </div>
-      </div>
-      <div class="divider"></div>
-    </div>
-  </div>
-  <div class="contOut clearfix">
-    <div class="contIn">
-      <div class="section middle clearfix">
-        <div class="job">
-          <h2>United States Army<i class="fa fa-plus openBtn"></i><span>2000 - 2006</span></h2>
-          <p><strong>Position:</strong>Administration<br/><strong>Description:</strong>Logistical database modeling for transportation battalion's convoy movements<br/><span class="brag">Developed a tracking database for logistical transportation convoy movements - used for creating accurate predictive re-deployment supply dates.</span></p>
-        </div>
-      </div>
-      <div class="divider"></div>
-    </div>
-  </div>
-  <div class="contOut clearfix half">
-    <div class="contIn">
-      <div class="section middle clearfix">
-        <div class="skills code odd">
-          <h3>Code & Software<i class="fa fa-code"></i></h3>
-          <ul>
-            <li class="prim">JavaScript</li>
-            <li>jQuery</li>
-            <li>jQuery UI</li>
-            <li>Angular</li>
-            <li>AJAX</li>
-            <li class="prim">CSS</li>
-            <li>CSS3</li>
-            <li>Sass</li>
-            <li>Scss</li>
-            <li>Compass</li>
-            <li class="light">Bourbon</li>
-            <li class="prim">HTML</li>
-            <li>HMTL5</li>
-            <li>xhtml</li>
-            <li>Jade</li>
-            <li class="light">Haml</li>
-            <li class="light">SVG</li>
-            <li class="prim">Database</li>
-            <li class="light">Ruby</li>
-            <li>Ruby on Rails</li>
-            <li>ASP</li>
-            <li>PHP</li>
-            <li class="light">PostgreSQL</li>
-            <li class="light">MySQL</li>
-            <li class="prim">Platforms</li>
-            <li>RapidWeaver</li>
-            <li>Wix</li>
-            <li>WordPress</li>
-            <li>Ghost</li>
-            <li class="light">Tumblr</li>
-            <li class="light">Joomla</li>
-            <li class="prim">API</li>
-            <li>Google Maps</li>
-            <li>Google Places</li>
-            <li>Facebook</li>
-            <li>Pinterest</li>
-            <li>Instagram</li>
-            <li class="light">PayPal</li>
-            <li class="prim">Frameworks</li>
-            <li>Bootstrap</li>
-            <li>Foundation</li>
-            <li>Pure</li>
-            <li class="prim">Editors</li>
-            <li>Aptana</li>
-            <li>Brackets</li>
-            <li>Sublime Text</li>
-            <li>Codepen</li>
-            <li>jsFiddle</li>
-            <li>Plist Editor Pro</li>
-            <li class="prim">Environments</li>
-            <li>Git</li>
-            <li>BitBucket</li>
-            <li>GitHub</li>
-            <li>WAMP/MAMP</li>
-            <li class="prim">Graphics</li>
-            <li>Photoshop</li>
-            <li>Illustrator</li>
-            <li class="light">After Effects</li>
-          </ul>
-        </div>
-        <div class="skills software">
-          <h3>Practices & Tools<i class="fa fa-laptop"></i></h3>
-          <ul>
-            <li class="prim">Markup</li>
-            <li>Semantic/intuitive</li>
-            <li>Unintrusive</li>
-            <li>Uniform Indention</li>
-            <li>Sparingly Complex</li>
-            <li>Browser Compliance</li>
-            <li>Validated</li>
-            <li>SEO Compliant</li>
-            <li class="prim">Design</li>
-            <li>Responsive</li>
-            <li>Single Page Apps</li>
-            <li>MVC Frameworks</li>
-            <li>UI & UX</li>
-            <li>Branding</li>
-            <li>A/B Testing</li>
-            <li>Pixel Perfect</li>
-            <li>Cross-browser</li>
-            <li>Touch Friendly</li>
-            <li>Retina Ready</li>
-            <li>Fast</li>
-            <li class="prim">Dev Approach</li>
-            <li>Plan</li>
-            <li>Modular Builds</li>
-            <li>Version Control</li>
-            <li>Test</li>
-            <li>Debug</li>
-            <li class="prim">Troubleshooting</li>
-            <li>StackOverflow</li>
-            <li>Chrome Dev Tools</li>
-            <li class="prim">Project Management</li>
-            <li>Asana</li>
-            <li>Jira</li>
-            <li>Hipchat</li>
-            <li>Basecamp</li>
-            <li>Slack</li>
-            <li class="prim">Site Optimization</li>
-            <li>Google Analytics</li>
-            <li>Webmaster/Console Tools</li>
-            <li>Website Insight</li>
-            <li>PageSpeed</li>
-          </ul>
-        </div>
-      </div>
-      <div class="divider"></div>
-    </div>
-  </div>
-  <div class="contOut clearfix">
-    <div class="contIn">
-      <div class="contracts clearfix">
-        <h3>Contract Employers</h3>
-        <div class="contract">
-          <h4>Internet Marketing Bar</h4>
-          <p class="desc">User Interface (UI) design, custom WP Admin design, custom WP theme design, Dashboard &<a href="https://codepen.io/jhawes/pen/gbPrbZ" target="_blank">Email Mktg dashboard</a>design.</p><span class="date">2014</span>
-        </div>
-        <div class="contract">
-          <h4>Iron Post Media</h4>
-          <p class="desc">Custom WP theme changes & custom<a href="https://codepen.io/jhawes/pen/ujdgK" target="_blank">Google Maps polygon coordinate tool</a>used for real estate<a href="https://codepen.io/jhawes/pen/wBACp" target="_blank">drill-down navigation</a>design.</p><span class="date">2014</span>
-        </div>
-        <div class="contract">
-          <h4>California Crane School</h4>
-          <p class="desc">Various custom PHP & WP projects:<a href="http://californiacraneschool.com" target="_blank">CaliforniaCraneSchool.com</a>,<a href="http://craneaccidents.com" target="_blank">CraneAccidents.com</a>,<a href="http://cranehunter.com" target="_blank">CraneHunter.org</a>, and more to come.</p><span class="date">2011 - 2014</span>
-        </div>
-        <div class="contract">
-          <h4>SMUD</h4>
-          <p class="desc">
-             Additions & changes to various DOM elements & stylesheets within company portal.<span class="date">2010</span></p>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="contOut clearfix half">
-    <div class="contIn">
-      <div class="section middle clearfix">
-        <ul class="buttons">
-          <li><a href="http://onelittledesigner.com" target="_blank">1LittleDesigner.com</a></li>
-          <li><a href="http://rapidweaverebook.com" target="_blank">RapidWeaverEbook.com</a></li>
-          <li><a href="http://pure4rw.com" target="_blank">Pure4RW.com</a></li>
-          <li><a href="http://hashtaghawes.com" target="_blank">HashtagHawes.com</a></li>
-          <li><a href="http://papertemple.net" target="_blank">PaperTemple.net</a></li>
-          <li><a href="http://coffeetablestudios.com" target="_blank">CoffeeTableStudios.com</a></li>
-        </ul>
-      </div>
-      <div class="divider"></div>
-    </div>
-  </div>
-  <ul class="sm">
-    <li><a href="https://codepen.io/jhawes/"><i class="fa fa-codepen"></i></a></li>
-    <li><a href="https://twitter.com/jeremyhawes"><i class="fa fa-twitter"></i></a></li>
-    <li><a href="https://www.facebook.com/1LittleDesigner"><i class="fa fa-facebook"></i></a></li>
-    <li><a href="https://plus.google.com/+JeremyHawes/posts"><i class="fa fa-google-plus"></i></a></li>
-    <li><a href="https://www.flickr.com/photos/artbyhawes/"><i class="fa fa-flickr"></i></a></li>
-    <li><a href="http://instagram.com/haweshead/"><i class="fa fa-instagram"></i></a></li>
-    <li><a href="https://www.linkedin.com/in/jeremyhawes"><i class="fa fa-linkedin"></i></a></li>
-  </ul>
 @endsection
